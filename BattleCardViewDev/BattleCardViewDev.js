@@ -37,9 +37,19 @@ new Wotg.Plugins.Simple({
         node.textcolor = "#c2c3b5";
     });
 
-
+    var infoDiv;
     events.add('afterLaunch', function () {
    		Wotg.controller().popups.openOverlayOpacity = 0.4;
+        var infoContainer = atom.dom('#screens-footer');
+        infoDiv = atom.dom.create('div').css({
+                                                'text-align':'center',
+                                                'height':'100%',
+                                                'margin-left': '80px',
+                                                'margin-right': '80px',
+                                                'line-height': '15px',
+                                                'padding-top': '1px'
+                                            })
+                .appendTo(infoContainer);
 	});
 
 
@@ -370,4 +380,24 @@ new Wotg.Plugins.Simple({
 	
 	});
 
+    /** @name Wotg.Battle.Input.Cards */
+    plugin.refactor('Wotg.Battle.Input.Cards', {
+        targetCard: function method (card) {
+            method.previous.apply(this, arguments);
+            var content = "<table style=\"width: 100%; height: 100%; \"><tr>";
+            if (card.model.effects.length > 0){
+                for(var i = 0; i<card.model.effects.length; i++){
+                    content += "<td>" + Wotg.lang('cards.' + card.proto.id + '.' + card.model.effects[i] ).replace(/ *\[[^\]]*\] */g, "") + "</td>";
+                }
+            }
+            content += "</tr></table>";
+            infoDiv.html(content);
+        },
+        untargetCard: function method (card) {
+            method.previous.apply(this, arguments);
+            if(this.targeted == null || (this.targeted && this.targeted == card)){
+                infoDiv.html('');
+            }
+        }
+    });
 });
