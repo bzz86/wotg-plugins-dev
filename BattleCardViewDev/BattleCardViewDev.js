@@ -386,8 +386,16 @@ new Wotg.Plugins.Simple({
             method.previous.apply(this, arguments);
             var content = "<table style=\"width: 100%; height: 100%; \"><tr>";
             if (card.model.effects.length > 0){
-                for(var i = 0; i<card.model.effects.length; i++){
-                    content += "<td>" + Wotg.lang('cards.' + card.proto.id + '.' + card.model.effects[i] ).replace(/ *\[[^\]]*\] */g, "") + "</td>";
+                if(card.model.effects.length <= 2){
+                    content += "<td>";
+                    for(var i = 0; i<card.model.effects.length; i++){
+                        content += Wotg.lang('cards.' + card.proto.id + '.' + card.model.effects[i] ).replace(/ *\[[^\]]*\] */g, "") + "<br/>";
+                    }
+                    content += "</td>";
+                }else{
+                    for(var i = 0; i<card.model.effects.length; i++){
+                        content += "<td>" + Wotg.lang('cards.' + card.proto.id + '.' + card.model.effects[i] ).replace(/ *\[[^\]]*\] */g, "") + "</td>";
+                    }
                 }
             }
             content += "</tr></table>";
