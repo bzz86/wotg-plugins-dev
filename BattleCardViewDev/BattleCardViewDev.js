@@ -401,14 +401,14 @@ new Wotg.Plugins.Simple({
             content += "</tr></table>";
             infoDiv.html(content);
             atom.dom('.b-chat').css({display: "none"});
-            atom.dom('.b-channel').css({display: "none"});
+            atom.dom('.b-chanel').css({display: "none"});
         },
         untargetCard: function method (card) {
             method.previous.apply(this, arguments);
             if(this.targeted == null || (this.targeted && this.targeted == card)){
                 infoDiv.html('');
                 atom.dom('.b-chat').css({display: "block"});
-                atom.dom('.b-channel').css({display: "block"});
+                atom.dom('.b-chanel').css({display: "block"});
             }
         }
     });
