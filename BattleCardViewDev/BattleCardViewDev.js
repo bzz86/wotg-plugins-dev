@@ -400,11 +400,15 @@ new Wotg.Plugins.Simple({
             }
             content += "</tr></table>";
             infoDiv.html(content);
+            atom.dom('.b-chat').hide();
+            atom.dom('.b-channel').hide();
         },
         untargetCard: function method (card) {
             method.previous.apply(this, arguments);
             if(this.targeted == null || (this.targeted && this.targeted == card)){
                 infoDiv.html('');
+                atom.dom('.b-chat').show();
+                atom.dom('.b-channel').show();
             }
         }
     });
