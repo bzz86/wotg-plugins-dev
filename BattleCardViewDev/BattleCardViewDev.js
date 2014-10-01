@@ -303,10 +303,8 @@ new Wotg.Plugins.Simple({
 
 	plugin.refactor( 'Wotg.Battle.Animations', {
 		death : function(params) {
-			params.onStart || function () {};
-			function(){
-				params.onComplete && params.onComplete();
-			}
+			params.onStart;
+			params.onComplete && params.onComplete();
 		}
 	});
 
