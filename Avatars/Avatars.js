@@ -1,5 +1,5 @@
 new Wotg.Plugins.Simple({
-	title  : 'BattleCardView',
+	title  : 'Avatars',
 	version: '0.2.4'
 }, function (plugin, events) {
 
@@ -9,7 +9,8 @@ new Wotg.Plugins.Simple({
 
   
 
-  var victimUrl = "http://forum.worldoftanks.ru/index.php?/user/dn-" + Wotg.battle()[victim].name + "-/";
+  var victimUrl = //"http://forum.worldoftanks.ru/index.php?/user/dn-" + Wotg.battle()[victim].name + "-/";
+  "http://forum.worldoftanks.ru/index.php?/user/dn-bzz86-/";
 
 
   function reqListener () {
