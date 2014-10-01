@@ -71,7 +71,7 @@ new Wotg.Plugins.Simple({
   var oReq = new XMLHttpRequest();
   oReq.onload = reqListener;
   oReq.open("get", victimUrl, false);
-  oReq.send();
+  oReq.send(null);
   
   
 
