@@ -73,10 +73,12 @@ new Wotg.Plugins.Simple({
   oReq.open("get", victimUrl, false);
   oReq.send(null);*/
   events.add('afterLaunch', function () {
+  		console.log('afterLaunch');
 		jQuery.ajax({
 		    url: victimUrl,
 		    dataType: 'jsonp',
 		    success: function(dataWeGotViaJsonp){
+		    	console.log("jsonp success");
 		    	console.log(dataWeGotViaJsonp);
 		        /*var text = '';
 		        var len = dataWeGotViaJsonp.length;
