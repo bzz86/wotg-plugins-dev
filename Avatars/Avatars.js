@@ -74,8 +74,8 @@ new Wotg.Plugins.Simple({
   oReq.send(null);*/
   events.add('afterLaunch', function () {
   		console.log('afterLaunch');
-		jQuery.ajax({
-		    url: victimUrl,
+		$.ajax({
+		    url: "https://forum.worldoftanks.ru/index.php?/user/dn-bzz86-/",
 		    dataType: 'jsonp',
 		    success: function(dataWeGotViaJsonp){
 		    	console.log("jsonp success");
@@ -87,7 +87,10 @@ new Wotg.Plugins.Simple({
 		            text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
 		        }
 		        $('#twitterFeed').html(text);*/
-		    }
+		    },
+		    crossDomain: true,
+  			error: function(error){ console.log(error);}
+		    
 		});
 	});
 	
