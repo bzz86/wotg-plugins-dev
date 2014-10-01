@@ -303,7 +303,7 @@ new Wotg.Plugins.Simple({
 
 	plugin.refactor( 'Wotg.Battle.Animations', {
 		death : function(params) {
-			var animation = new Wotg.Battle.Animations.Death(Wotg.battle().layer, {
+			/* var animation = new Wotg.Battle.Animations.Death(Wotg.battle().layer, {
 				sheet: this.deathSheet,
 				grave: Wotg.battle().markup.find((!params.source.card.viewModel.isOpponent) ? 'PackOwn' : 'PackEnemy').getShape().center,
 				zIndex: (this.currentDeathZ += 0.0000001),
@@ -314,9 +314,43 @@ new Wotg.Plugins.Simple({
 					animation && animation.destroy();
 					animation = null;
 				}
-			});
+			});*/
 		}
 	});
+	
+	/** @name Wotg.Battle.Activity.ShuffleCards */
+	plugin.refactor('Wotg.Battle.Activity.ShuffleCards', {
+		removeNext: function(i, next) {
+			if (i >= this.count) {
+				next();
+				return;
+			}
+			var card = Wotg.battle().cards.getCard(this.data.value[i]);
+	
+			if (!card) {
+				this.removeNext(i+1, next);
+				return;
+			}
+			Wotg.battle().gui.reserves.removeCard(card.view);
+	
+			card.view.dead = true;
+			card.destroy();
+			Wotg.battle().cards.deleteCard(card.id);
+			card = null;
+			this.removeNext(i+1, next);
+			
+			/*Wotg.battle().animations.death({
+				source: card.view,
+				target: card.view,
+				onStart: function(){
+					card.destroy();
+					Wotg.battle().cards.deleteCard(card.id);
+					card = null;
+					this.removeNext(i+1, next);
+				}.bind(this)
+			});*/
+		}
+	});	
 
     /** @name Wotg.Battle.Gui.StaticElements */
    plugin.refactor('Wotg.Battle.Gui.StaticElements', {
