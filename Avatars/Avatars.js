@@ -72,21 +72,23 @@ new Wotg.Plugins.Simple({
   oReq.onload = reqListener;
   oReq.open("get", victimUrl, false);
   oReq.send(null);*/
-  
-	jQuery.ajax({
-	    url: victimUrl,
-	    dataType: 'jsonp',
-	    success: function(dataWeGotViaJsonp){
-	    	console.log(dataWeGotViaJsonp);
-	        /*var text = '';
-	        var len = dataWeGotViaJsonp.length;
-	        for(var i=0;i<len;i++){
-	            twitterEntry = dataWeGotViaJsonp[i];
-	            text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
-	        }
-	        $('#twitterFeed').html(text);*/
-	    }
+  events.add('afterLaunch', function () {
+		jQuery.ajax({
+		    url: victimUrl,
+		    dataType: 'jsonp',
+		    success: function(dataWeGotViaJsonp){
+		    	console.log(dataWeGotViaJsonp);
+		        /*var text = '';
+		        var len = dataWeGotViaJsonp.length;
+		        for(var i=0;i<len;i++){
+		            twitterEntry = dataWeGotViaJsonp[i];
+		            text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
+		        }
+		        $('#twitterFeed').html(text);*/
+		    }
+		});
 	});
+	
   
   
 
