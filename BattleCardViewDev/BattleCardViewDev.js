@@ -303,8 +303,18 @@ new Wotg.Plugins.Simple({
 
 	plugin.refactor( 'Wotg.Battle.Animations', {
 		death : function(params) {
-			//do only oncomplete
-			params.onComplete && params.onComplete();
+			var animation = new Wotg.Battle.Animations.Death(Wotg.battle().layer, {
+				sheet: this.deathSheet,
+				grave: Wotg.battle().markup.find((!params.source.card.viewModel.isOpponent) ? 'PackOwn' : 'PackEnemy').getShape().center,
+				zIndex: (this.currentDeathZ += 0.0000001),
+				shape: params.source.shape,
+				onStart: params.onStart || function () {},
+				onEnd: function(){
+					params.onComplete && params.onComplete();
+					animation && animation.destroy();
+					animation = null;
+				}
+			});
 		}
 	});
 
