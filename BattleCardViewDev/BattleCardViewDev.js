@@ -382,7 +382,7 @@ new Wotg.Plugins.Simple({
 
         drawNames: function method() {
             method.previous.apply(this, arguments);
-            this.objects.player.name.setText(Wotg.battle().player.name + "\n Ходит " +(Wotg.battle().playerno));
+            this.objects.player.name.setText(Wotg.battle().player.name + "\n Ходит " +(Wotg.controller().battleListener.gameData.turnno));
             this.objects.opponent.name.setText(Wotg.battle().opponent.name + "\n Ходит " + (Wotg.battle().opponent.playerno + 1));
         }
     });
