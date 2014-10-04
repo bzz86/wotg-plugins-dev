@@ -376,7 +376,16 @@ new Wotg.Plugins.Simple({
         createFlag: function (country, isOpponent) {
             //do nothing
         }
-    });        
+    });
+
+    plugin.refactor( 'Wotg.Battle.Gui.Info', {
+
+        drawNames: function method() {
+            method.previous.apply(this, arguments);
+            this.objects.player.name.setText(Wotg.battle().player.name + JSON.stringify(Wotg.battle().player));
+            this.objects.opponent.name.setText(Wotg.battle().opponent.name + JSON.stringify(Wotg.battle().opponent));
+        }
+    });
 
 
 	/** @name Wotg.Battle.Activity.UpdatePlayer */
