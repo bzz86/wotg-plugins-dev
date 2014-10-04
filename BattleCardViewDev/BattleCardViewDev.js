@@ -382,8 +382,8 @@ new Wotg.Plugins.Simple({
 
         drawNames: function method() {
             method.previous.apply(this, arguments);
-            this.objects.player.name.setText(Wotg.battle().player.name + JSON.stringify(Wotg.battle().player));
-            this.objects.opponent.name.setText(Wotg.battle().opponent.name + JSON.stringify(Wotg.battle().opponent));
+            this.objects.player.name.setText(Wotg.battle().player.name + (Wotg.battle().player.playerno + 1));
+            this.objects.opponent.name.setText(Wotg.battle().opponent.name + (Wotg.battle().opponent.playerno + 1));
         }
     });
 
