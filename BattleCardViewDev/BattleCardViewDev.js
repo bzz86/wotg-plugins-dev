@@ -58,7 +58,7 @@ new Wotg.Plugins.Simple({
     //новые картинки для индикации атаки и передвижения
     plugin.addImages({
 		'sem1': 'semaphore/semaphore'+indicatorImage+'.png',
-        'bright-icons': 'battle/card1.png'
+        'bright-icons': 'battle/card2.png'
 	});
 
     //картинка индикатора движения
