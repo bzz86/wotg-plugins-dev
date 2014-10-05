@@ -57,7 +57,8 @@ new Wotg.Plugins.Simple({
     var indicatorImage = plugin.getConfig('sem') || '1';
     //новые картинки для индикации атаки и передвижения
     plugin.addImages({
-		'sem1': 'semaphore/semaphore'+indicatorImage+'.png'
+		'sem1': 'semaphore/semaphore'+indicatorImage+'.png',
+        'bright-icons': 'battle/card1.png'
 	});
 
     //картинка индикатора движения
@@ -65,6 +66,27 @@ new Wotg.Plugins.Simple({
       "rect": [53, 42, 17, 30],  //36
       "shift": [0, 0]
     }];
+
+    //яркие иконки пожара, маскировки, прикрытия, охранения
+    Wotg.Card.Markup.Battle.sprites.battleCardAbility = [{
+      "rect": [90, 0, 29, 34],
+      "shift": [0, 0]
+    }, {
+      "rect": [60, 0, 29, 34],
+      "shift": [0, 0]
+    }, {
+      "rect": [30, 0, 29, 34],
+      "shift": [0, 0]
+    }, {
+      "rect": [0, 0, 29, 34],
+      "shift": [0, 0]
+    }];
+
+    Wotg.Card.Markup.Battle.markup.Triggers.Trigger0.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    Wotg.Card.Markup.Battle.markup.Triggers.Trigger1.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    Wotg.Card.Markup.Battle.markup.Triggers.Trigger2.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    Wotg.Card.Markup.Battle.markup.Triggers.Trigger3.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+
 
     Wotg.Card.Markup.Battle.sprites.atkIndicator = [{
       "rect": [0, 39, 36, 39],      //red
