@@ -82,11 +82,19 @@ new Wotg.Plugins.Simple({
       "shift": [0, 0]
     }];
 
-    Wotg.Card.Markup.Battle.markup.Triggers.Trigger0.sprite.texture = 'bzz86:BattleCardView:bright-icons';
-    Wotg.Card.Markup.Battle.markup.Triggers.Trigger1.sprite.texture = 'bzz86:BattleCardView:bright-icons';
-    Wotg.Card.Markup.Battle.markup.Triggers.Trigger2.sprite.texture = 'bzz86:BattleCardView:bright-icons';
-    Wotg.Card.Markup.Battle.markup.Triggers.Trigger3.sprite.texture = 'bzz86:BattleCardView:bright-icons';
-
+    plugin.markupChange(Wotg.Card.Markup.Battle)
+    .change('Triggers.Trigger0', function(node){
+         node.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    })
+    .change('Triggers.Trigger1', function(node){
+         node.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    })
+    .change('Triggers.Trigger2', function(node){
+         node.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    })
+    .change('Triggers.Trigger3', function(node){
+         node.sprite.texture = 'bzz86:BattleCardView:bright-icons';
+    });
 
     Wotg.Card.Markup.Battle.sprites.atkIndicator = [{
       "rect": [0, 39, 36, 39],      //red
